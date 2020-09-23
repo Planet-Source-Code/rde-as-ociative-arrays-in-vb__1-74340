@@ -1,0 +1,125 @@
+
+Associative arrays
+
+In computer science, an associative array, map, or
+dictionary is an abstract data type composed of a
+collection of (key,value) pairs, such that each
+possible key appears at most once in the collection.
+
+Operations associated with this data type allow:
+ •the addition of pairs to the collection,
+ •the removal of pairs from the collection,
+ •the modification of the values of existing pairs, and
+ •the lookup of the value associated with a particular key.
+
+The dictionary problem is the task of designing a
+data structure that implements an associative array.
+A standard solution to the dictionary problem is a
+hash table; in some cases it is also possible to solve
+the problem using directly addressed arrays, binary
+search trees, or other more specialized structures.
+
+Associative arrays are sometimes implemented as an
+ordered map. A map is a structure that associates
+values to keys. This structure is optimized for
+several different uses;
+ it can be treated as an array,
+ list (vector),
+ hash table (an implementation of a map),
+ dictionary,
+ collection,
+ stack,
+ queue,
+ and probably more.
+As array values can be other arrays, trees and
+multidimensional arrays are also possible. 
+
+
+
+In an associative array, the association between a
+key and a value is often known as a "binding", and
+the same word "binding" may also be used to refer
+to the process of creating a new association.
+
+
+
+Operations usually defined for an associative array:
+ • Add or insert: add a new (key,value) pair,
+   binding the new key to its new value.
+ • Reassign: replace the value of a (key,value) pair,
+   binding an old key to a new value.
+ • Remove or delete: remove a (key,value) pair,
+   unbinding a given key from its value.
+ • Lookup: find the value (if any) that is bound to a
+   given key. The argument to this operation is the key,
+   and the value is returned from the operation.
+
+Other operations can include determining the number
+of bindings or constructing an iterator to loop over
+all the bindings.
+
+
+
+A bidirectional map is a related abstract data type
+in which the bindings operate in both directions:
+each value must be associated with a unique key,
+and a second lookup operation takes a value and
+looks up the key associated with that value.
+
+If there is no binding then the cell stores a special
+sentinel value that indicates the absence of a binding.
+
+
+
+The most frequently used general purpose implementation
+of an associative array is with a hash table: an array
+of bindings, together with a hash function that maps
+each possible key into an array index. The basic idea
+of a hash table is that the binding for a given key is
+stored at the position given by applying the hash
+function to that key, and that lookup operations are
+performed by looking at that cell of the array and
+using the binding found there. However, hash table
+based dictionaries must be prepared to handle collisions
+that occur when two keys are mapped by the hash function
+to the same index, and many different collision
+resolution strategies have been developed for dealing
+with this situation, often based either on open
+addressing (looking at a sequence of hash table indices
+instead of a single index, until finding either the
+given key or an empty cell) or on hash chaining
+(storing a small association list instead of a single
+binding in each hash table cell).
+
+
+
+Dictionaries may also be stored in binary search trees
+or in data structures specialized to a particular type
+of keys such as radix trees, tries, Judy arrays, or
+van Emde Boas trees, but these implementation methods
+are less efficient than hash tables as well as placing
+greater restrictions on the types of data that they can
+handle. The advantages of these alternative structures
+come from their ability to handle operations beyond the
+basic ones of an associative array, such as finding the
+binding whose key is the closest to a queried key, when
+the query is not itself present in the set of bindings.
+
+
+
+
+In Smalltalk, Objective-C, .NET, Python, and REALbasic
+they are called dictionaries; in Perl and Ruby they are
+called hashes; in C++, Java, and Go they are called maps
+(see map (C++), unordered_map (C++), and Map); in Common
+Lisp and Windows PowerShell, they are called hash tables
+(since both typically use this implementation). In PHP,
+all arrays can be associative, except that the keys are
+limited to integers and strings. In JavaScript, all
+objects behave as associative arrays. In Lua, they are
+called tables, and are used as the primitive building
+block for all data structures. In Visual FoxPro, they
+are called Collections.
+
+
+

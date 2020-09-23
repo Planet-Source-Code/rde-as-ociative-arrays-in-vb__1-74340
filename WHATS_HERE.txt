@@ -1,0 +1,18 @@
+
+AssocArr.cls is a stand alone Associative Array class
+and although it has fully functional FindNext and FindPrev
+methods, as well as NextItem and PrevItem properties, it
+does not have For-Each capability.
+
+The Associative_Array folder contains a Dll project that
+consists of two classes and a module, as well as a test
+project. The Associative Array Dll library has the same
+properties and methods but also has For-Each capability.
+Please note that For-Each is quite slow compared to the
+simple enumeration properties and methods provided.
+
+The Custom_Enumerator folder contains a sample project
+that consists of two classes and a module, which are the
+basics needed for the For-Each enumerator functionality.
+This brilliant light-weight For-Each example is thanks
+to Kelly Ethridge.
