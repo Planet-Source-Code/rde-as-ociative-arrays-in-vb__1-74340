@@ -1,0 +1,80 @@
+IEnumerator
+
+This is the interface .NET uses to allow for quick and easy enumerators to be built.
+Now, it's just as easy in VB6. By using lightweight object creation, the IEnumVariant
+interface can easily be implemented, and event redirected, as in this case. The
+mEnumerator module and IEnumerator class together form a pair that allows for quick
+creation of enumerator classes just by using Implements.
+
+To create an enumerator, you simply implement the IEnumerator interface in a class of
+your choice.
+
+Where to put it, where to put it....
+In the examples provided, I could have easily implemented the interface inside the SimpleList
+class and had it pass itself into the CreateEnumerator function. That is the simplest way, but
+it prevents more than one enumeration from happening at a time on the same object, and if
+you wanted to change enumeration styles (ArrayEnumerator) it is much easier to use a
+separate class and instantiate the style prefered at the time.
+
+Now to the interface
+
+IEnumerator
+
+Public Property Get Current As Variant
+
+	This returns the current value of the enumerator. Whatever value the designer wishes
+	it to be. It doesn't even have to be in the list. Generally this is the array element
+	at the current index position.
+
+Public Function MoveNext As Boolean
+
+	This a request to move to the next element in the enumeration. Again, the next element
+	is what ever you wish it to be. It is really just saying that it wants to access the
+	next element via the Current property. It doesn't care how the enumerator tracks the
+	elements.
+	
+	You return whether there is a next element. If the enumeration is all done, then 
+	False should be returned. If the MoveNext request successfully moved to a next element,
+	then True should be return. The Current property will then be called.
+
+	Generally, MoveNext increments an array index and returns True, until the index is 
+	passed the end of the array, at which point it retuns False.
+
+Public Sub Reset
+
+	This requests that the enumerator reset itself to an initial state. Basically saying
+	the enumerator should get prepared to move to the first element in the enumeration.
+	After this is called, MoveNext will be call.
+
+Once you have implemented the interface, you need to add your code to the NewEnum function
+in the class that you will perform a For..Each on. The typical example would be:
+
+Public Function NewEnum() As IUnknown
+	Dim en As New MyEnumerator
+	en.Init Me	<--- or whatever type of initialization yours requires
+	Set NewEnum = CreateEnumerator(en)
+End Function
+
+Don't forget to set this function's attribute to -4 so it can be enumerated.
+
+Another possibility is to implements a function like GetEnumerator in which a reference to
+a custom enumerator is returned and then is enumerated as follows:
+
+Public Sub EnumIt()
+	Dim en As IEnumerator
+	Set en = mList.GetEnumerator
+	en.Reset
+	Do While en.MoveNext
+		Debug.Pring en.Current
+	Loop
+End Sub
+
+This is similar to how Java implements iterators and such. Either way is up to you.
+
+
+
+I hope this gets you going quickly. If you have any comments, suggestions or questions,
+please let me know.
+
+Thank you,
+	Kelly

@@ -1,0 +1,10 @@
+
+FYI: Self-Balancing Binary Trees
+
+What is a binary tree. A binary tree is a tree data structure in which each node has at most two children. Typically the child nodes are called left and right. Binary trees are commonly used to implement binary search trees and binary heaps. Each child node to the left has a value less than its parent node. And each child node to the right has a value equal to or greater than its parent node. Binary trees can store duplicate values, but it is not recommended because one would need a second "tie breaker" value to determine whether the node references the correct value or not.
+
+A balanced binary tree is where the depth of all the children differs by at most one level. Balanced trees have a predictable depth (how many nodes are traversed from the root to a child). Searching a balanced binary tree is very fast; O(log n) where n is the number of nodes in the tree. In VB, use this formula: Log(TreeCount)/Log(2). So, how fast is fast? A tree containing one million nodes can be completely searched in less than 20 comparisons!
+
+There are several varieties of binary trees. A sorted list of values added to a binary tree is also known as a linked list. Every node has just one child. When a binary tree becomes a linked list, it is called a degenerate tree. A degenerate tree search time is exponentially greater than a balanced tree. Searching for the 256th node (final node) in a linked list requires comparing all 256 nodes whereas searching in a balanced tree is no more than 8 comparisons (2^8=256).
+
+So how does one prevent a binary tree from becoming a degenerate tree? There are many options. One of them is adding nodes in random order which produces a good tree even if not perfectly balanced. However, getting nodes added in random order is rarely possible since one does not generally have control over the data/keys they will have. Balancing options include Red-Black trees, AVL trees, threaded binary trees, and many more.
